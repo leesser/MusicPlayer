@@ -27,10 +27,10 @@ public class MyService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (mMediaPlayer!=null){
+        if (mMediaPlayer != null) {
             mMediaPlayer.stop();
             mMediaPlayer.release();
-            mMediaPlayer=null;
+            mMediaPlayer = null;
         }
     }
 
@@ -62,7 +62,9 @@ public class MyService extends Service {
         public void playProgress(int progress) {
             if (mMediaPlayer != null) {
                 mMediaPlayer.seekTo(progress);
-                mMediaPlayer.start();
+                if (mMediaPlayer.isPlaying()) {
+                    mMediaPlayer.start();
+                }
             }
         }
 
@@ -82,7 +84,7 @@ public class MyService extends Service {
                             mMediaPlayer.start();
                         }
                     });
-                } else if (!mMediaPlayer.isPlaying()){
+                } else if (!mMediaPlayer.isPlaying()) {
                     int progress = getCurrentProgress();
                     //设置文件从当前进度播放
                     mMediaPlayer.seekTo(progress);
