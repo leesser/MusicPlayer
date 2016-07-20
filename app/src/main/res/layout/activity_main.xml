@@ -9,6 +9,7 @@
     <EditText
         android:id="@+id/et_path"
         android:hint="请输入歌曲路径"
+        android:text="aa.mp3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <SeekBar
